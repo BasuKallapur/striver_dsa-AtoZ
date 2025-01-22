@@ -138,10 +138,27 @@ public class linkedlist {
     return head;
     }
 
-    //
+    //insert new element "el" before value "x"
+    public static Node insertELementBeforeX(Node head, int el, int x){
+        if(head == null) return head;
+        if(head.data == x){
+            return new Node(el, head);
+        }
+        Node temp= head;
+        while(temp != null){
+            if(temp.next.data == x){
+                Node newNode= new Node(el);
+                newNode.next= temp.next;
+                temp.next= newNode;
+                break;
+            }
+            temp= temp.next;
+        }
+    return head;
+    } 
 
     public static void main(String[] args) {
-        int arr[]= {1, 2, 3, 4, 5};
+        int arr[]= {1, 2,  4, 5};
         Node head= convArr2LL(arr);
 
         // int n= lenOfLL(head);
@@ -170,6 +187,8 @@ public class linkedlist {
         // head= insertElementAtK(head, 3, 108);
         // print(head);
         
+        head= insertELementBeforeX(head, 108, 1);
+        print(head);
 
     }
 }
