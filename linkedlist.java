@@ -33,7 +33,7 @@ public class linkedlist {
     return count;
     }
 
-    //remove head of LinkedList
+    //print function
     public static void print(Node head){
         while(head != null){
             System.out.print(head.data + " ");
@@ -41,7 +41,7 @@ public class linkedlist {
         }
     }
     
-    //remove head
+    //remove head of LinkedList
     public static Node removeHead(Node head){
         if(head == null) return head;
         head= head.next;
