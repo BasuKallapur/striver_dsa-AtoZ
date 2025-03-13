@@ -107,8 +107,58 @@ public class doubly_linkedlist {
         return;
     }
 
+    //insert.
+    //insert element before head //assuming more than 1 element present
+    public static Node insertEleBefHead(Node head, int val){
+        Node newNode= new Node(val, head, null);
+        head.back= newNode;
+    return newNode;
+    }
+
+    // insert element before tail 
+    public static Node insertEleBefTail(Node head, int val){
+        if(head.next == null) return insertEleBefHead(head, val);
+        Node temp= head;
+        while(temp.next != null){
+            temp= temp.next;
+        }
+        Node tempBack= temp.back;
+        Node newNode= new Node(val, temp, tempBack);
+        tempBack.next= newNode;
+        temp.back= newNode;
+    return head;
+    }
+
+    // insert element before kth element
+    public static Node insertBefKthEle(Node head, int val, int k){
+        Node temp= head;
+        int count= 0;
+        if(k == 1) return insertEleBefHead(head, val);
+        while(temp.next != null){
+            count++;
+            if(count == k){
+                break;
+            }
+            temp= temp.next;
+        }
+        Node tempBack= temp.back;
+        Node newNode= new Node(val, temp, tempBack);
+        tempBack.next= newNode;
+        temp.back= newNode;
+    return head;
+    }
+
+    // insert element given node //except head
+    public static void insertBefNodeK(Node node, int val){
+        Node prev= node.back;
+        Node newNode= new Node(val, node, prev);
+        prev.next= newNode;
+        node.back= newNode;
+    return;
+    }
+
     public static void main(String[] args) {
-        int arr[]= {1,2,3,4,2,};
+        int arr[]= {1,2,3,4,5};
 
         // //print doubly linkedlist
         Node head= convTo2DLL(arr);
@@ -133,6 +183,24 @@ public class doubly_linkedlist {
         // //remove element k
         // removeEleK(head);
         // print(head);
+
+
+        // INSERT
         
+        // // insert element before head
+        // head= insertEleBefHead(head, 108);
+        // print(head);
+
+        // // insert element before tail
+        // head= insertEleBefTail(head, 108);
+        // print(head);
+
+        // // insert element before kth element
+        // head= insertBefKthEle(head, 108, 1);
+        // print(head);
+        
+        // insert element before node
+        insertBefNodeK(head.next.next.next.next, 108);
+        print(head);
     }
 }
