@@ -40,7 +40,7 @@ public class sinlgy_LL {
         Node fast = head.next;
         while (fast != null && fast.next != null) {
             slow = slow.next;
-            fast = fast.next.next;
+            fast = fast.next;
         }
         return slow;
     }
@@ -49,7 +49,7 @@ public class sinlgy_LL {
         head.next = new Node(2);
         head.next.next = new Node(3);
         head.next.next.next = new Node(4);
-        head.next.next.next.next = new Node(5);
+        // head.next.next.next.next = new Node(5);
 
         // print values
         printLL(head);
@@ -84,6 +84,10 @@ public class sinlgy_LL {
         System.out.println();
         System.out.print("after merging: ");
         printLL(head);
+
+
+        System.out.println("---------------");
+        printLL(right);
 
 
     }
